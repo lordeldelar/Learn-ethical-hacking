@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>هكرز | Hackers</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="stayle.css" />
+</head>
+<body>
+
+<!-- ================================================
+     HEADER
+     ================================================ -->
+<header class="site-header">
+
+  <!-- الشخص الأول: LORD (يمين في RTL) -->
+  <div class="person-card">
+    <div class="avatar-wrap" onclick="playMusic('lord')" title="اضغط لتشغيل الموسيقى">
+      <img
+        id="avatar-lord"
+        src="https://files.catbox.moe/ml3qua.png"
+        alt="『 Ḷ.Ö.Ṛ.Ḋ 』"
+        onerror="this.src='https://ui-avatars.com/api/?name=LORD&background=8b0000&color=fff&size=80'"
+      />
+      <div class="avatar-ring"></div>
+    </div>
+    <span class="person-name">『 Ḷ.Ö.Ṛ.Ḋ 』</span>
+  </div>
+
+  <!-- الوسط: الاسمان الكبيران -->
+  <div class="header-center">
+    <div class="header-names">
+      『 ÄḶ.ḊЁḶṚ 』
+      <span class="ampersand"> &amp; </span>
+      『 Ḷ.Ö.Ṛ.Ḋ 』
+    </div>
+  </div>
+
+  <!-- الشخص الثاني: AL.DELR (يسار في RTL) -->
+  <div class="person-card">
+    <div class="avatar-wrap" onclick="playMusic('aldelr')" title="/الهكر /mixkit-air-woosh-1489.wav">
+      <img
+        id="avatar-aldelr"
+        src="https://files.catbox.moe/s9cc8o.png"
+        alt="『 ÄḶ.ḊЁḶṚ 』"
+        onerror="this.src='https://ui-avatars.com/api/?name=ALDELR&background=8b0000&color=fff&size=80'"
+      />
+      <div class="avatar-ring"></div>
+    </div>
+    <span class="person-name">『 ÄḶ.ḊЁḶṚ 』</span>
+  </div>
+
+</header>
+<div class="header-line"></div>
+
+<!-- عناصر الصوت (هتضيف روابط الموسيقى هنا) -->
+<audio id="audio-lord"   src="https://files.catbox.moe/a4udct.mp3"   preload="none"></audio>
+<audio id="audio-aldelr" src="https://files.catbox.moe/a4udct.mp3" preload="none"></audio>
+<audio id="audio-hero"   src=""   preload="none"></audio>
+
+
+<!-- ================================================
+     HERO SECTION
+     ================================================ -->
+<section class="hero-section" id="top">
+ 
+  <!-- الصورة الكبيرة الوسط -->
+  <div class="hero-avatar-wrap" onclick="playMusic('hero')" title="اضغط لتشغيل الموسيقى">
+    <img
+      id="avatar-hero"
+      src="https://files.catbox.moe/xgpefk.jpeg"
+      alt="Hackers"
+      onerror="this.src='https://ui-avatars.com/api/?name=H&background=8b0000&color=c9a84c&size=160'"
+    />
+    <div class="hero-ring-1"></div>
+    <div class="hero-ring-2"></div>
+  </div>
+
+  <!-- العنوان بالعربي -->
+  <h1 class="hero-title-ar">هّـکْـــرزٍ</h1>
+
+  <!-- الخط الفاصل -->
+  <div class="hero-divider"></div>
+
+  <!-- العنوان بالإنجليزي -->
+  <h2 class="hero-title-en">𝑯𝑨𝑪𝑲𝑬𝑹𝑺</h2>
+
+  <!-- نبذة صغيرة -->
+  <p class="hero-sub">الحقيقة التي لا يريدونك أن تعرفها</p>
+
+</section>
+
+
+<!-- ================================================
+     فهرس المواضيع
+     ================================================ -->
+<section id="index-section">
+  <div class="section-header reveal">
+    <span class="section-tag">// TABLE OF CONTENTS</span>
+    <h2 class="section-title">فِهرِس <span>المَواضيع</span></h2>
+  </div>
+
+  <div class="index-section">
+    <div class="index-grid">
+
+      <a href="#topic-1" class="index-btn reveal">
+        <span class="index-num">01</span>
+        <span class="index-text">الهكر مش زي ما انت متخيل</span>
+        <span class="index-emoji">🎭</span>
+      </a>
+
+      <a href="#topic-2" class="index-btn reveal">
+        <span class="index-num">02</span>
+        <span class="index-text">ما هو الهكر وليه اسمه هكر؟</span>
+        <span class="index-emoji">📖</span>
+      </a>
+
+      <a href="#topic-3" class="index-btn reveal">
+        <span class="index-num">03</span>
+        <span class="index-text">أول عملية اختراق في العالم</span>
+        <span class="index-emoji">⚡</span>
+      </a>
+
+      <a href="#topic-4" class="index-btn reveal">
+        <span class="index-num">04</span>
+        <span class="index-text">كيف أصبح الهكر مجرماً يحاسبه القانون</span>
+        <span class="index-emoji">⚖️</span>
+      </a>
+
+      <a href="#topic-5" class="index-btn reveal">
+        <span class="index-num">05</span>
+        <span class="index-text">شركات كبرى أنقذت الهكر</span>
+        <span class="index-emoji">🏢</span>
+      </a>
+
+      <a href="#topic-6" class="index-btn reveal">
+        <span class="index-num">06</span>
+        <span class="index-text">من مجرم لموظف قانوني</span>
+        <span class="index-emoji">🔄</span>
+      </a>
+
+      <a href="#topic-7" class="index-btn reveal">
+        <span class="index-num">07</span>
+        <span class="index-text">أنواع الهكر والقبعات</span>
+        <span class="index-emoji">🎩</span>
+      </a>
+
+      <a href="#topic-8" class="index-btn reveal">
+        <span class="index-num">08</span>
+        <span class="index-text">الهكر والتجارة</span>
+        <span class="index-emoji">💼</span>
+      </a>
+
+      <a href="#topic-9" class="index-btn reveal">
+        <span class="index-num">09</span>
+        <span class="index-text">الهكر والاقتصاد</span>
+        <span class="index-emoji">📈</span>
+      </a>
+
+      <a href="#topic-10" class="index-btn reveal">
+        <span class="index-num">10</span>
+        <span class="index-text">الهكر بين السياسة والحرب</span>
+        <span class="index-emoji">⚔️</span>
+      </a>
+
+      <a href="#topic-11" class="index-btn reveal">
+        <span class="index-num">11</span>
+        <span class="index-text">هكرز غيّروا التاريخ</span>
+        <span class="index-emoji">🌍</span>
+      </a>
+
+      <a href="#topic-12" class="index-btn reveal">
+        <span class="index-num">12</span>
+        <span class="index-text">الفرق بين الهكرز العرب والأجانب</span>
+        <span class="index-emoji">🌐</span>
+      </a>
+
+      <a href="#topic-13" class="index-btn reveal">
+        <span class="index-num">13</span>
+        <span class="index-text">هكرز مصريين غيّروا التاريخ</span>
+        <span class="index-emoji">🇪🇬</span>
+      </a>
+
+      <a href="#topic-14" class="index-btn reveal">
+        <span class="index-num">14</span>
+        <span class="index-text">الهكر في عصر الـ AI</span>
+        <span class="index-emoji">🤖</span>
+      </a>
+
+      <a href="#topic-15" class="index-btn reveal">
+        <span class="index-num">15</span>
+        <span class="index-text">كيف تحمي نفسك من الاختراق</span>
+        <span class="index-emoji">🛡️</span>
+      </a>
+
+      <a href="#topic-16" class="index-btn reveal">
+        <span class="index-num">16</span>
+        <span class="index-text">ابدأ الآن — منصات تعليمية</span>
+        <span class="index-emoji">🚀</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================
+     قلب الموقع — المحتوى الـ 16 موضوع
+     ================================================ -->
+<section id="content-section">
+  <div class="section-header reveal">
+    <span class="section-tag">// DEEP DIVE</span>
+    <h2 class="section-title">قَلب <span>الموضوع</span></h2>
+  </div>
+
+  <div class="content-section">
+
+    <!-- ══════════════════════════════ -->
+    <!-- TOPIC 1 -->
+    <!-- ══════════════════════════════ -->
+    <div class="topic-block" id="topic-1">
+      <div class="topic-header">
+        <span class="topic-num">01</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">الهكر مش زي ما انت متخيل! 🎭</h3>
+          <span class="topic-badge">// MYTH VS REALITY</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-1">
+        <!-- المحتوى هيتحمل من content.js -->
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 2 -->
+    <div class="topic-block" id="topic-2">
+      <div class="topic-header">
+        <span class="topic-num">02</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">ما هو الهكر وليه اسمه هكر؟ 📖</h3>
+          <span class="topic-badge">// ORIGIN STORY</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-2">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 3 -->
+    <div class="topic-block" id="topic-3">
+      <div class="topic-header">
+        <span class="topic-num">03</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">أول عملية اختراق في العالم ⚡</h3>
+          <span class="topic-badge">// HISTORY</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-3">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 4 -->
+    <div class="topic-block" id="topic-4">
+      <div class="topic-header">
+        <span class="topic-num">04</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">كيف أصبح الهكر مجرماً يحاسبه القانون ⚖️</h3>
+          <span class="topic-badge">// LAW & ORDER</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-4">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 5 -->
+    <div class="topic-block" id="topic-5">
+      <div class="topic-header">
+        <span class="topic-num">05</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">شركات كبرى أنقذت الهكر 🏢</h3>
+          <span class="topic-badge">// BIG TECH</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-5">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 6 -->
+    <div class="topic-block" id="topic-6">
+      <div class="topic-header">
+        <span class="topic-num">06</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">من مجرم لموظف قانوني 🔄</h3>
+          <span class="topic-badge">// TRANSFORMATION</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-6">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 7 -->
+    <div class="topic-block" id="topic-7">
+      <div class="topic-header">
+        <span class="topic-num">07</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">أنواع الهكر والقبعات 🎩</h3>
+          <span class="topic-badge">// HACKER TYPES</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-7">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 8 -->
+    <div class="topic-block" id="topic-8">
+      <div class="topic-header">
+        <span class="topic-num">08</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">الهكر والتجارة 💼</h3>
+          <span class="topic-badge">// BUSINESS ATTACKS</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-8">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 9 -->
+    <div class="topic-block" id="topic-9">
+      <div class="topic-header">
+        <span class="topic-num">09</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">الهكر والاقتصاد 📈</h3>
+          <span class="topic-badge">// ECONOMY</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-9">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 10 -->
+    <div class="topic-block" id="topic-10">
+      <div class="topic-header">
+        <span class="topic-num">10</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">الهكر بين السياسة والحرب ⚔️</h3>
+          <span class="topic-badge">// CYBER WARFARE</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-10">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 11 -->
+    <div class="topic-block" id="topic-11">
+      <div class="topic-header">
+        <span class="topic-num">11</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">هكرز غيّروا التاريخ 🌍</h3>
+          <span class="topic-badge">// LEGENDS</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-11">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 12 -->
+    <div class="topic-block" id="topic-12">
+      <div class="topic-header">
+        <span class="topic-num">12</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">الفرق بين الهكرز العرب والأجانب 🌐</h3>
+          <span class="topic-badge">// EAST VS WEST</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-12">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 13 -->
+    <div class="topic-block" id="topic-13">
+      <div class="topic-header">
+        <span class="topic-num">13</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">هكرز مصريين غيّروا التاريخ 🇪🇬</h3>
+          <span class="topic-badge">// EGYPTIAN LEGENDS</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-13">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 14 -->
+    <div class="topic-block" id="topic-14">
+      <div class="topic-header">
+        <span class="topic-num">14</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">الهكر في عصر الـ AI 🤖</h3>
+          <span class="topic-badge">// FUTURE</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-14">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 15 -->
+    <div class="topic-block" id="topic-15">
+      <div class="topic-header">
+        <span class="topic-num">15</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">كيف تحمي نفسك من الاختراق 🛡️</h3>
+          <span class="topic-badge">// SELF DEFENSE</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-15">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+    <div class="topic-divider"></div>
+
+    <!-- TOPIC 16 -->
+    <div class="topic-block" id="topic-16">
+      <div class="topic-header">
+        <span class="topic-num">16</span>
+        <div class="topic-title-wrap">
+          <h3 class="topic-title">ابدأ الآن — منصات تعليمية 🚀</h3>
+          <span class="topic-badge">// START HERE</span>
+        </div>
+      </div>
+      <div class="topic-body" id="content-topic-16">
+        <div class="loading-placeholder">جاري تحميل المحتوى...</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================
+     FOOTER
+     ================================================ -->
+<footer class="site-footer">
+  <div class="neon-line"></div>
+
+  <p class="footer-title">『 ÄḶ.ḊЁḶṚ 』 &amp; 『 Ḷ.Ö.Ṛ.Ḋ 』</p>
+
+  <p style="color:var(--text-muted);font-size:13px;font-family:'Share Tech Mono',monospace;margin-top:6px;">
+    HACKERS · THANAWEYA AMMA 2026
+  </p>
+
+  <div class="footer-links">
+    <a href="https://wa.me/+201221143060?text=ازيك+يا+LORD+كنت+عايز+حاجة+عن+الموقع"
+       target="_blank" class="footer-link">
+      تواصل مع 『 Ḷ.Ö.Ṛ.Ḋ 』 واتساب 📨
+    </a>
+    <a href="https://t.me/hkrroy"
+       target="_blank" class="footer-link">
+      تواصل مع 『 Ḷ.Ö.Ṛ.Ḋ 』 تيليجرام 📩
+    </a>
+    <a href="https://wa.me/+964 780 139 9486?text=ازيك+يا+ALDELR+كنت+عايز+حاجة+عن+الموقع"
+       target="_blank" class="footer-link">
+      تواصل مع 『 ÄḶ.ḊЁḶṚ 』 واتساب 📨
+    </a>
+    <a href="https://t.me/al_delr_2"
+       target="_blank" class="footer-link">
+      تواصل مع 『 ÄḶ.ḊЁḶṚ 』 تيليجرام 📩
+    </a>
+  </div>
+
+  <p style="color:var(--text-muted);font-size:12px;margin-top:24px;font-family:'Share Tech Mono',monospace;">
+    بالتوفيق للجميع ♡ · Good luck to everyone ✨<br/>
+    © 2026 ALL RIGHTS RESERVED
+  </p>
+</footer>
+
+
+<!-- JS Files -->
+<script src="script.js"></script>
+<script src="content.js"></script>
+
+</body>
+</html>
+
+
+
+
+

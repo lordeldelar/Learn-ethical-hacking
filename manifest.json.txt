@@ -1,0 +1,21 @@
+{
+  "short_name": "الهكر الأخلاقي",
+  "name": "تطبيق للتوعيه من مخاطر الانترنت والتوعيه وتعليم الهكر الأخلاقي",
+  "icons": [
+    {
+      "src": "image.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/Learn-ethical-hacking/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "orientation": "portrait"
+}

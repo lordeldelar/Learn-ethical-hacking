@@ -1,0 +1,836 @@
+/* ============================================
+   HACKERS WEBSITE — style.css
+   الألوان: أسود + أحمر غامق + ذهبي
+   ============================================ */
+
+/* ── المتغيرات ── */
+:root {
+  --black:       #080808;
+  --black2:      #0f0f0f;
+  --black3:      #161616;
+  --red:         #8b0000;
+  --red-mid:     #a50000;
+  --red-bright:  #c0392b;
+  --red-glow:    rgba(139,0,0,0.25);
+  --gold:        #c9a84c;
+  --gold-light:  #e2c97e;
+  --gold-dim:    #7a6130;
+  --gold-glow:   rgba(201,168,76,0.2);
+  --text:        #e8d5b0;
+  --text-dim:    #7a6e5f;
+  --text-muted:  #4a4035;
+  --white:       #ffffff;
+  --grid-color:  rgba(201,168,76,0.07);
+  --border:      rgba(201,168,76,0.15);
+  --border-red:  rgba(139,0,0,0.4);
+}
+
+/* ── ريسيت ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--text);
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+  cursor: default;
+  min-height: 100vh;
+}
+
+/* ── الشبكة في الخلفية ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Scanlines فوق كل شيء ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.06) 3px,
+    rgba(0,0,0,0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* كل الأقسام فوق الشبكة */
+header, section, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+
+/* ================================================
+   HEADER
+   ================================================ */
+.site-header {
+  width: 100%;
+  padding: 24px 32px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: rgba(8,8,8,0.95);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* كارت كل شخص */
+.person-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* الصورة الدائرية في الهيدر */
+.avatar-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.avatar-wrap img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  display: block;
+}
+
+/* حلقة بتلف حوالين الصورة */
+.avatar-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--red);
+  border-right-color: var(--gold);
+  animation: spin-ring 3s linear infinite;
+}
+
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+
+.avatar-wrap:hover img {
+  border-color: var(--red);
+  box-shadow: 0 0 20px var(--red-glow), 0 0 40px var(--red-glow);
+}
+
+/* اسم الشخص تحت الصورة */
+.person-name {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* الوسط: الاسمين الكبيرين */
+.header-center {
+  text-align: center;
+  flex: 1;
+  padding: 0 16px;
+}
+
+.header-names {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--gold-light);
+  text-shadow: 0 0 15px var(--gold-glow);
+  line-height: 2;
+  letter-spacing: 2px;
+}
+
+.header-names .ampersand {
+  color: var(--red-bright);
+  font-size: 1.2em;
+}
+
+/* خط فاصل تحت الهيدر */
+.header-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--red), transparent);
+  margin-top: -1px;
+}
+
+
+/* ================================================
+   HERO SECTION
+   ================================================ */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* توهج خلفية الـ hero */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(139,0,0,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* الصورة الوسط الكبيرة */
+.hero-avatar-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.hero-avatar-wrap img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--red);
+  display: block;
+  transition: box-shadow 0.3s;
+}
+
+.hero-avatar-wrap:hover img {
+  box-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(139,0,0,0.15);
+}
+
+/* حلقات تلف حوالين الصورة الكبيرة */
+.hero-ring-1 {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--red);
+  border-bottom-color: var(--gold);
+  animation: spin-ring 4s linear infinite;
+}
+
+.hero-ring-2 {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-left-color: var(--gold-dim);
+  border-right-color: var(--red);
+  animation: spin-ring 6s linear infinite reverse;
+}
+
+/* عنوان الـ hero */
+.hero-title-ar {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+  text-shadow: 0 0 40px var(--red-glow);
+  letter-spacing: 4px;
+}
+
+.hero-divider {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--red), transparent);
+  margin: 12px auto;
+}
+
+.hero-title-en {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  color: var(--gold);
+  letter-spacing: 8px;
+  text-shadow: 0 0 20px var(--gold-glow);
+  margin-bottom: 20px;
+}
+
+/* نبذة صغيرة تحت العنوان */
+.hero-sub {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  letter-spacing: 3px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+
+/* ================================================
+   SECTION HEADER (مشترك)
+   ================================================ */
+.section-header {
+  text-align: center;
+  padding: 64px 24px 40px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--red-bright);
+  border: 1px solid var(--border-red);
+  padding: 4px 16px;
+  margin-bottom: 16px;
+  background: rgba(139,0,0,0.08);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: var(--white);
+}
+
+.section-title span {
+  color: var(--gold);
+  text-shadow: 0 0 20px var(--gold-glow);
+}
+
+
+/* ================================================
+   فهرس — Index Section
+   ================================================ */
+.index-section {
+  padding: 0 24px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.index-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* زر الفهرس */
+.index-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--black3);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 14px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* الخط الملون على الجانب الأيمن (RTL) */
+.index-btn::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 0 50px 50px 0;
+  transition: width 0.3s;
+}
+
+.index-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.index-btn:hover::before {
+  width: 6px;
+}
+
+/* ألوان مختلفة لكل زر */
+.index-btn:nth-child(1)::before  { background: #c0392b; }
+.index-btn:nth-child(2)::before  { background: #e67e22; }
+.index-btn:nth-child(3)::before  { background: #f1c40f; }
+.index-btn:nth-child(4)::before  { background: #2ecc71; }
+.index-btn:nth-child(5)::before  { background: #1abc9c; }
+.index-btn:nth-child(6)::before  { background: #3498db; }
+.index-btn:nth-child(7)::before  { background: #9b59b6; }
+.index-btn:nth-child(8)::before  { background: #e91e63; }
+.index-btn:nth-child(9)::before  { background: #ff5722; }
+.index-btn:nth-child(10)::before { background: #00bcd4; }
+.index-btn:nth-child(11)::before { background: #8bc34a; }
+.index-btn:nth-child(12)::before { background: #ff9800; }
+.index-btn:nth-child(13)::before { background: #c9a84c; }
+.index-btn:nth-child(14)::before { background: #e040fb; }
+.index-btn:nth-child(15)::before { background: #26c6da; }
+.index-btn:nth-child(16)::before { background: #ef5350; }
+
+.index-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--gold-dim);
+  min-width: 24px;
+  flex-shrink: 0;
+}
+
+.index-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.index-emoji {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+
+/* ================================================
+   CONTENT SECTION — قلب الموقع
+   ================================================ */
+.content-section {
+  padding: 0 24px 80px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* كل موضوع */
+.topic-block {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.topic-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* هيدر الموضوع */
+.topic-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-red);
+}
+
+.topic-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2.5rem;
+  color: var(--red);
+  text-shadow: 0 0 20px var(--red-glow);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+.topic-title-wrap {}
+
+.topic-title {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.topic-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+}
+
+/* جسم المحتوى */
+.topic-body {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--text);
+}
+
+.topic-body p {
+  margin-bottom: 16px;
+}
+
+.topic-body strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.topic-body em {
+  color: var(--red-bright);
+  font-style: normal;
+}
+
+/* بوكس مميز داخل المحتوى */
+.highlight-box {
+  background: var(--black3);
+  border: 1px solid var(--border-red);
+  border-right: 3px solid var(--red);
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.highlight-box.gold {
+  border-color: var(--border);
+  border-right-color: var(--gold);
+}
+
+/* قائمة داخل المحتوى */
+.topic-body ul {
+  list-style: none;
+  margin: 16px 0;
+}
+
+.topic-body ul li {
+  padding: 6px 0 6px 0;
+  padding-right: 20px;
+  position: relative;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.topic-body ul li::before {
+  content: '▸';
+  position: absolute;
+  right: 0;
+  color: var(--red-bright);
+}
+
+/* قائمة مرقمة */
+.topic-body ol {
+  padding-right: 20px;
+  margin: 16px 0;
+}
+
+.topic-body ol li {
+  padding: 5px 8px;
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.topic-body ol li::marker {
+  color: var(--gold);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* خط فاصل بين المواضيع */
+.topic-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--red), transparent);
+  margin-bottom: 80px;
+  opacity: 0.4;
+}
+
+/* بطاقة شخص (للهكرز) */
+.hacker-card {
+  background: var(--black3);
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin: 16px 0;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.hacker-card:hover {
+  border-color: var(--gold);
+}
+
+.hacker-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+
+.hacker-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* بطاقة منصة تعليمية */
+.platform-card {
+  background: var(--black3);
+  border: 1px solid var(--border-red);
+  padding: 24px;
+  margin: 20px 0;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.platform-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+}
+
+.platform-name {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+
+.platform-desc {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.platform-btn {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  padding: 10px 28px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+
+.platform-btn:hover {
+  background: transparent;
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* جدول الحماية */
+.protection-group {
+  margin: 24px 0;
+}
+
+.protection-group-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--red-bright);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-red);
+}
+
+.protection-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.protection-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.site-footer {
+  background: var(--black2);
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.neon-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--red), transparent);
+  margin-bottom: 32px;
+}
+
+.footer-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: var(--gold-light);
+  text-shadow: 0 0 15px var(--gold-glow);
+  margin-bottom: 6px;
+  letter-spacing: 2px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.footer-link {
+  display: inline-block;
+  background: var(--black3);
+  border: 1px solid var(--border-red);
+  color: var(--text-dim);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+}
+
+.footer-link:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  background: rgba(201,168,76,0.08);
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+
+/* ================================================
+   REVEAL ANIMATION (scroll)
+   ================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 16px 20px;
+  }
+
+  .avatar-wrap,
+  .avatar-wrap img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header-names {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .index-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .index-btn {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .index-text {
+    font-size: 0.78rem;
+  }
+
+  .hero-avatar-wrap,
+  .hero-avatar-wrap img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .site-header {
+    padding: 14px 16px;
+  }
+
+  .avatar-wrap,
+  .avatar-wrap img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-names {
+    font-size: 0.6rem;
+  }
+
+  .index-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .hero-avatar-wrap,
+  .hero-avatar-wrap img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .hero-title-ar {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .topic-num {
+    font-size: 1.8rem;
+    min-width: 40px;
+  }
+}
