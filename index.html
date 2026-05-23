@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="manifest.json">
 
   <!-- CSS -->
   <link rel="stylesheet" href="stayle.css" />
@@ -509,6 +510,13 @@
 <!-- JS Files -->
 <script src="script.js"></script>
 <script src="content.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => console.log('جاهز للتثبيت!'))
+      .catch(err => console.log('فيه مشكلة:', err));
+  }
+</script>
 
 </body>
 </html>
