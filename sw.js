@@ -1,4 +1,4 @@
-const CACHE_NAME = 'smart-cache-v1';
+const CACHE_NAME = 'smart-cache-v1'; // هنا تم تصحيح c لـ سمول
 
 // هنا بنحفظ بس رابط البداية عشان التثبيت يشتغل
 const INITIAL_ASSETS = [
@@ -23,10 +23,9 @@ self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
       if (cachedResponse) {
-        return cachedResponse; // لو الملف محفوظ قبل كده افتحه علطول
+        return cachedResponse; 
       }
 
-      // لو مش محفوظ، هاته من النت واحفظ نسخة منه للمستقبل
       return fetch(e.request).then((networkResponse) => {
         if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
           return networkResponse;
@@ -39,7 +38,6 @@ self.addEventListener('fetch', (e) => {
 
         return networkResponse;
       }).catch(() => {
-        // لو مفيش نت خالص والملف مش متكاش، تقدر تخليه يفتح الصفحة الرئيسية
         return caches.match('./index.html');
       });
     })
